@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import './App.css'
+import NewArrivals from './components/newarrivals/NewArrivals'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-
+<NewArrivals></NewArrivals>
     </>
   )
 }

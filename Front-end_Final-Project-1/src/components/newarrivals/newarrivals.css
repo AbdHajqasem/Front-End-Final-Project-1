@@ -1,0 +1,71 @@
+.arrivals-container{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    gap: 20px;
+    background-color: var(--button-bg-color);
+    flex-direction: column;
+    padding: 15px 0px 15px 0px;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.arrivals-title{
+    margin-left: 30px;
+    color: var(--body-test-color);
+}
+ 
+.arrivals-cards-container{
+    display: flex;
+    gap: 15px;
+    width: min-content;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+ 
+ 
+.card-info-container-arrivals {
+    display: flex;
+    flex-direction: column;
+}
+ 
+.product-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ 
+.arrivals-card {
+    background-color: var(--button-bg-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 286px;
+    height: 412px;
+}
+ 
+.arrivals-img-container {
+    height: 286px;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 10px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.card-title-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+h3{
+    margin: 0;
+}
+
+ 
