@@ -1,12 +1,9 @@
 .arrivals-container{
-    position: fixed;
-    bottom: 0;
     display: flex;
     gap: 20px;
     background-color: var(--button-bg-color);
     flex-direction: column;
     padding: 15px 0px 15px 0px;
-    overflow-x: scroll;
     width: 100%;
 }
 
@@ -16,11 +13,12 @@
 }
  
 .arrivals-cards-container{
-    display: flex;
-    gap: 15px;
-    width: min-content;
-    padding-right: 30px;
-    padding-left: 30px;
+    height: 412px;
+    width: 100%;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(286px, 1fr));
+    overflow-y: hidden;
 }
  
  
@@ -29,18 +27,11 @@
     flex-direction: column;
 }
  
-.product-name{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
- 
 .arrivals-card {
     background-color: var(--button-bg-color);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    width: 286px;
     height: 412px;
 }
  
@@ -54,7 +45,6 @@
 img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
 }
 
 .card-title-container{
@@ -64,8 +54,13 @@ img {
     margin-top: 5px;
 }
 
-h3{
-    margin: 0;
+.price-material{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
- 
+h3,p{
+    margin: 0;
+}

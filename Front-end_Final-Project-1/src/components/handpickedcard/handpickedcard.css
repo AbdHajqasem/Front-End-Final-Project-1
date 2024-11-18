@@ -1,0 +1,16 @@
+.handpicked-img-container{
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.handpick-img{
+    object-fit: cover;
+}
+
+.handpicked-title{
+    position: absolute;
+    bottom: 10%;;
+}
