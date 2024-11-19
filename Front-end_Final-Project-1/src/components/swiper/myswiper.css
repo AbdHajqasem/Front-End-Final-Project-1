@@ -1,0 +1,9 @@
+.custom-swiper {
+    background-color: #1B4B66; 
+    padding: 40px 0;
+  }
+
+.swiper-slide{
+    display: flex !important;
+    justify-content: center;
+}
