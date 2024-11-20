@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import HeroSection from './components/shearedComponent/HeroSection';
+import NavBar from './components/shearedComponent/NavBar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-
+      <NavBar />
+      <HeroSection/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
