@@ -3,10 +3,10 @@ import { Box, Grid, Card, Stack, Pagination } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { Link as RouterLink } from "react-router-dom";
-import black from "../assets/newArriavls/black.png";
-import brown from "../assets/newArriavls/brown.png";
-import duffle from "../assets/newArriavls/duffle.png";
-import pink from "../assets/newArriavls/pink.png";
+import black from "../assets/HandBags/black.jpg";
+import brown from "../assets/HandBags/brown.jpg";
+import travel from "../assets/HandBags/travel.jpg";
+import pink from "../assets/HandBags/pink.jpg";
 // import database from "../../public/database.json";
 
 // Dummy JSON data
@@ -48,7 +48,7 @@ const data = {
       price: 349.99,
       discount: { discountRate: 10 },
       ratingsNum: 230,
-      images: [{ publicURL: duffle }],
+      images: [{ publicURL: travel }],
     },
     {
       id: "product-5",
@@ -84,7 +84,7 @@ const data = {
       price: 459.99,
       discount: { discountRate: 12 },
       ratingsNum: 60,
-      images: [{ publicURL: duffle }],
+      images: [{ publicURL: travel }],
     },
     {
       id: "product-9",
@@ -120,7 +120,7 @@ const data = {
       price: 89.99,
       discount: { discountRate: 10 },
       ratingsNum: 170,
-      images: [{ publicURL: duffle }],
+      images: [{ publicURL: travel }],
     },
     {
       id: "product-13",
@@ -156,7 +156,7 @@ const data = {
       price: 329.99,
       discount: { discountRate: 22 },
       ratingsNum: 210,
-      images: [{ publicURL: duffle }],
+      images: [{ publicURL: travel }],
     },
     {
       id: "product-17",
@@ -192,7 +192,7 @@ const data = {
       price: 599.99,
       discount: { discountRate: 15 },
       ratingsNum: 130,
-      images: [{ publicURL: duffle }],
+      images: [{ publicURL: travel }],
     },
   ],
   itemsPerPage: 9,
@@ -253,7 +253,7 @@ const ProductList = () => {
                   src={product.images && product.images[0]?.publicURL}
                   style={{
                     width: "100%",
-                    height: "auto",
+                    height: "250px",
                     maxHeight: "285px",
                     objectFit: "cover",
                     borderRadius: "10px",
