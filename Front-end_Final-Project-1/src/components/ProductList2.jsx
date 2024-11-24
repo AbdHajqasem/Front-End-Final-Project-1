@@ -262,17 +262,6 @@ const ProductList = () => {
                   alt={product.name}
                 />
               </Box>
-              <Box
-                component="p"
-                sx={{
-                  m: 0,
-                  mt: "5px",
-                  display: "flex",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <FavoriteBorderOutlinedIcon />
-              </Box>
 
               <Box
                 component="section"
@@ -293,14 +282,35 @@ const ProductList = () => {
                   <Box
                     component="p"
                     sx={{
-                      fontWeight: "600",
-                      fontSize: { xs: "14px", md: "16px" },
-                      color: "#171520",
-                      mb: "2px",
+                      display: "flex",
+                      justifyContent: "space-between",
                     }}
                   >
-                    {product.name}
+                    <Box
+                      component="p"
+                      sx={{
+                        fontWeight: "600",
+                        fontSize: { xs: "14px", md: "16px" },
+                        color: "#171520",
+                        mb: "2px",
+                      }}
+                    >
+                      {product.name}
+                    </Box>
+
+                    <Box
+                      component="p"
+                      sx={{
+                        m: 0,
+                        mt: "5px",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <FavoriteBorderOutlinedIcon />
+                    </Box>
                   </Box>
+
                   <Box
                     component="p"
                     sx={{
@@ -316,12 +326,12 @@ const ProductList = () => {
                   component="div"
                   sx={{
                     display: "flex",
-                    justifyContent: "space-between",
+                    justifyContent: "left",
                     alignItems: "center",
                     mb: 1,
                   }}
                 >
-                  <Box component="p" sx={{ color: "#FF8C4B", m: 0 }}>
+                  <Box component="p" sx={{ color: "#FF8C4B", m: 0, mr: 2 }}>
                     <StarIcon />
                     <StarIcon />
                     <StarIcon />
@@ -345,8 +355,8 @@ const ProductList = () => {
                   component="div"
                   sx={{
                     display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    justifyContent: "left",
+                    alignItems: "",
                     mb: 1,
                   }}
                 >
@@ -357,6 +367,7 @@ const ProductList = () => {
                       fontSize: { xs: "14px", md: "16px" },
                       color: "#171520",
                       m: 0,
+                      mr: 2,
                     }}
                   >
                     ${product.price}
@@ -370,6 +381,7 @@ const ProductList = () => {
                       lineHeight: "20px",
                       textDecoration: "line-through",
                       m: 0,
+                      mr: 2,
                     }}
                   >
                     $
@@ -388,7 +400,7 @@ const ProductList = () => {
                       m: 0,
                     }}
                   >
-                    {product.discount.discountRate}% off
+                    {product.discount.discountRate}% OFF
                   </Box>
                 </Box>
               </Box>
