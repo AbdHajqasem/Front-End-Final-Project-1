@@ -7,7 +7,6 @@ import black from "../assets/HandBags/black.jpg";
 import brown from "../assets/HandBags/brown.jpg";
 import travel from "../assets/HandBags/travel.jpg";
 import pink from "../assets/HandBags/pink.jpg";
-// import database from "../../public/database.json";
 
 // Dummy JSON data
 const data = {
