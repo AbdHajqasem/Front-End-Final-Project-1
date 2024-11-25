@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import Background from "../assets/About_Images/Main.jpg";
+import Background from "../../assets/About_Images/Main.jpg";
 
 const MainImage = () => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { Grid, Typography, Box } from "@mui/material";
-import Bags from "../assets/About_Images/1.jpg";
-import Watches from "../assets/About_Images/1.jpg";
-import Glasses from "../assets/About_Images/1.jpg";
-import MainImage from "./MainImage";
+import Bags from "../../assets/About_Images/1.jpg";
+import Watches from "../../assets/About_Images/1.jpg";
+import Glasses from "../../assets/About_Images/1.jpg";
+import MainImage from "../About/MainImage";
 const About = () => {
   return (
     <Box sx={{ mb: "55px" }}>
