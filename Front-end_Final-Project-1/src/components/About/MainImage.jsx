@@ -8,7 +8,7 @@ const MainImage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: "5vh",
+        marginTop: "0vh",
       }}
     >
       <Box
@@ -21,16 +21,16 @@ const MainImage = () => {
           backgroundRepeat: "no-repeat",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center", // Vertically center the content
-          alignItems: "flex-end", // Place the content on the right side
-          paddingRight: "5vw", // Add space from the right edge
+          justifyContent: "center",
+          alignItems: "flex-end",
+          paddingRight: "5vw",
         }}
       >
         {/* Text container */}
         <Box
           sx={{
-            textAlign: "left", // Left-align text inside this box
-            maxWidth: "30%", // Optional: Control text container width
+            textAlign: "left",
+            maxWidth: "30%",
           }}
         >
           {/* "About" text */}
@@ -41,7 +41,7 @@ const MainImage = () => {
               fontWeight: 600,
               fontSize: "2.6vw",
               marginBottom: "1rem",
-              lineHeight: "1.21em", // CamelCase for lineHeight
+              lineHeight: "1.21em",
               letterSpacing: "0.23em",
             }}
           >
