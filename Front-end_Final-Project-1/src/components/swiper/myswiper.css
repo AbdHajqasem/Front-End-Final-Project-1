@@ -1,0 +1,36 @@
+.handpick-container{
+  background-color: #1B4B66; 
+  height: 400px;
+  width: 100vw;
+  padding-top: 35px;
+}
+
+.custom-swiper{
+  margin-top: 30px !important;
+  max-width: 1360px;
+}
+
+.handpick-title{
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 44px;
+  margin-left: 25px;
+}
+
+.swiper-slide{
+    display: flex !important;
+    justify-content: center;
+}
+
+@media(min-width:1360px){
+  .handpick-container{
+    margin-left: calc(-50vw + 680px);
+  }
+  .main{
+    overflow-x: hidden;
+  }
+  .handpick-title{
+    margin-left:calc(50vw - 680px + 25px);
+  }
+}

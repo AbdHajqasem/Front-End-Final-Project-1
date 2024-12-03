@@ -1,4 +1,24 @@
 * {
-  margin: 0;
-  box-sizing: border-box;
-}
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .custom-prev,
+  .custom-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .custom-prev {
+    left: 3px;
+  }
+  
+  .custom-next {
+    right: 0px;
+  }
