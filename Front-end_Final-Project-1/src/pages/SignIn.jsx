@@ -38,7 +38,7 @@ export default function SignIn() {
       );
 
       console.log(user);
-      localStorage.setItem('token', JSON.stringify(user.token));
+      localStorage.setItem('token', JSON.stringify(user.data.token));
       localStorage.setItem('user', JSON.stringify(user.data));
       navigate('/');
     } catch (error) {
