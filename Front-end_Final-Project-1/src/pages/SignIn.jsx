@@ -11,6 +11,7 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 const LinkBox = styled(Box)({
   display: 'flex',
@@ -19,12 +20,32 @@ const LinkBox = styled(Box)({
 });
 export default function SignIn() {
   const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
   const [errorMsg, setError] = useState('');
 
+  const signIn = async () => {
+    try {
+      const user = await axios.post(
+        'https://backend-final-1-1-bkpd.onrender.com/login',
+        {
+          email: 'john@example.com',
+          password: 'userpassword123',
+        }
+      );
+
+      console.log(user);
+      localStorage.setItem('token', JSON.stringify(user.token));
+      localStorage.setItem('user', JSON.stringify(user.data));
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.message);
+    }
+  };
   return (
     <Box
       sx={{
@@ -85,7 +106,12 @@ export default function SignIn() {
         >
           <FormControlLabel control={<Checkbox />} label="Remember me" />
         </FormGroup>
-        <Button color="primary" variant="contained" sx={{ width: '100%' }}>
+        <Button
+          color="primary"
+          variant="contained"
+          sx={{ width: '100%' }}
+          onClick={signIn}
+        >
           SIGN IN
         </Button>
         <LinkBox>

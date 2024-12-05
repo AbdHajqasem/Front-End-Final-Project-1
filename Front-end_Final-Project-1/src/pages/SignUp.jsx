@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
+import axios from 'axios';
 
 const LinkBox = styled(Box)({
   display: 'flex',
@@ -23,14 +23,27 @@ const LinkBox = styled(Box)({
 export default function SignUp() {
   let navigate = useNavigate();
   const [userData, setUserData] = useState({
-    firstName: '',
-    lastName: '',
+    first: '',
+    last: '',
     email: '',
     password: '',
   });
   const [errorMsg, setError] = useState('');
+  console.log(userData);
+  const register = async () => {
+    try {
+      const user = await axios.post(
+        'https://backend-final-1-1-bkpd.onrender.com/register',
+        userData
+      );
 
-
+      navigate('/signin');
+      console.log(user.data);
+    } catch (error) {
+      setError(error);
+      console.log(errorMsg);
+    }
+  };
 
   return (
     <Box
@@ -74,7 +87,7 @@ export default function SignUp() {
             variant="outlined"
             onChange={(e) =>
               setUserData((pre) => {
-                return { ...pre, firstName: e.target.value };
+                return { ...pre, first: e.target.value };
               })
             }
           />
@@ -83,7 +96,7 @@ export default function SignUp() {
             variant="outlined"
             onChange={(e) =>
               setUserData((pre) => {
-                return { ...pre, lastName: e.target.value };
+                return { ...pre, last: e.target.value };
               })
             }
           />
@@ -125,13 +138,13 @@ export default function SignUp() {
           color="primary"
           variant="contained"
           sx={{ width: '100%' }}
-       
+          onClick={register}
         >
           SIGN Up
         </Button>
         {errorMsg && (
           <Typography variant="p" color="red">
-            {errorMsg}
+            {errorMsg.message}
           </Typography>
         )}
 
