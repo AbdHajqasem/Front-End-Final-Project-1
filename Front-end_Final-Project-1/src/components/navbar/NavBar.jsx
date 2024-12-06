@@ -45,7 +45,7 @@ export default function NavBar() {
             }}
           >
             {' '}
-            <Link to={'/handbags'} style={linkStyle}>
+            <Link to={'/Home11'} style={linkStyle}>
               Handbags
             </Link>
             <Link to={'/product'} style={linkStyle}>

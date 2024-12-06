@@ -1,6 +1,6 @@
 import Barnds from "../brands/Brands";
 import NewArrivals from "../newarrivals/NewArrivals";
-import MySwiper from "../swiper/MySwiper";
+import HandPicks from "../handpicks/HandPicks";
 import BottomCards from "../bottomcards/BottomCards";
 import HeroSection from "../herosection/HeroSection";
 import '../../app.css'
@@ -11,7 +11,7 @@ const HomePage = () => {
         <div className="main-2">
           <HeroSection></HeroSection>
           <NewArrivals></NewArrivals>
-          <MySwiper></MySwiper>
+          <HandPicks></HandPicks>
           <Barnds></Barnds>
           <BottomCards></BottomCards>
         </div>

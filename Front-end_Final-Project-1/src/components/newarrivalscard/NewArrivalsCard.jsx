@@ -1,19 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const NewArrivalsCard = () => {
+const NewArrivalsCard = (prop) => {
   return (
     <>
-      <Box
-        sx={{
-          height: "412px",
-          width: "100%",
-          display: "grid",
-          gap: "40px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(286px, 1fr))",
-          overflowY: "hidden",
-        }}
-      >
         <Box
           sx={{
             backgroundColor: "var(--button-bg-color)",
@@ -30,7 +20,7 @@ const NewArrivalsCard = () => {
               overflow: "hidden",
               width: "100%",
               borderRadius: "10px",
-              backgroundImage: "url('029ef5971eaa1f9cc5c527e9d758efcb.png')",
+              backgroundImage: `url(${prop.img})`,
               backgroundPosition: "center 70%",
               backgroundSize: "cover",
             }}
@@ -82,12 +72,11 @@ const NewArrivalsCard = () => {
                   lineHeight: "20px",
                 }}
               >
-                32.26$
+                {prop.price}
               </Typography>
             </Box>
           </Box>
         </Box>
-      </Box>
     </>
   );
 };

@@ -31,10 +31,7 @@ export default function SignIn() {
     try {
       const user = await axios.post(
         'https://backend-final-1-1-bkpd.onrender.com/login',
-        {
-          email: 'john@example.com',
-          password: 'userpassword123',
-        }
+        userData
       );
 
       console.log(user);

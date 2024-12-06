@@ -2,17 +2,9 @@ import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import StarIcon from '@mui/icons-material/Star';
 
-const ProductsCard = () => {
+const ProductsCard = (prop) => {
   return (
     <>
-      <Box
-        sx={{
-          width: "100%",
-          display: "grid",
-          gap: "40px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(286px, 1fr))",
-        }}
-      >
         <Box
           sx={{
             backgroundColor: "var(--button-bg-color)",
@@ -29,7 +21,7 @@ const ProductsCard = () => {
               overflow: "hidden",
               width: "100%",
               borderRadius: "10px",
-              backgroundImage: "url('029ef5971eaa1f9cc5c527e9d758efcb.png')",
+              backgroundImage: `url(${prop.img})`,
               backgroundPosition: "center 70%",
               backgroundSize: "cover",
             }}
@@ -54,7 +46,7 @@ const ProductsCard = () => {
                   fontWeight: 600,
                 }}
               >
-                Grande
+                {prop.name}
               </Typography>
               <FavoriteBorderIcon className="fav-icon" />
             </Box>
@@ -116,12 +108,11 @@ const ProductsCard = () => {
                   lineHeight: "20px",
                 }}
               >
-                32.26$
+                {prop.price}
               </Typography>
             </Box>
           </Box>
         </Box>
-      </Box>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-const BrandsCard = () => {
+const BrandsCard = (prop) => {
   return (
     <>
       <Box
@@ -14,7 +14,7 @@ const BrandsCard = () => {
       >
         <Box
           component="img"
-          src="c9c39da9-a1b4-4c42-ad88-29bd51715084.jpg"
+          src={prop.brandLogo}
           alt=""
           sx={{
             position: "absolute",
