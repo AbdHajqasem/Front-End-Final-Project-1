@@ -6,10 +6,16 @@ import ProductList from './components/productlist/ProductList';
 import Product from './components/product/product';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import AuthGuard from './components/AuthGurad';
+
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <AuthGuard>
+        <Layout />
+      </AuthGuard>
+    ),
     children: [
       {
         index: true,
@@ -40,6 +46,10 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 };
 export default App;

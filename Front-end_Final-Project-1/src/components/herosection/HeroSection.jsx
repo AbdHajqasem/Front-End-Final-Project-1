@@ -28,34 +28,50 @@ function HeroSection() {
             backgroundColor: '#DEDEDEB2',
             background: 'rgba(255,255,255,0.7)',
             height: '316px',
-            width: '759px',
+            width: '75vw',
             borderRadius: '  35px 0  0 35px',
             position: 'absolute',
             right: '0',
             top: '42px',
             paddingLeft: '50px',
-            // backdropFilter: 'blur(1px)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
         >
-          <Typography
-            variant="h2"
-            sx={{ color: '#1B4B66', fontWeight: '800', marginTop: '20px' }}
-          >
-            Carry your Funk
-          </Typography>
-          <Typography variant="h5" sx={{ color: '#1B4B66', marginTop: '10px' }}>
-            Trendy handbags collection for your party animal
-          </Typography>
+          <Box>
+            <Typography
+              sx={{
+                color: '#1B4B66',
+                fontWeight: '800',
+                marginTop: '20px',
+                fontSize: { xs: '1.75rem', sm: '2rem', md: '3rem' },
+              }}
+            >
+              Carry your Funk
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{ color: '#1B4B66', marginTop: '10px' }}
+            >
+              Trendy handbags collection for your party animal
+            </Typography>
+          </Box>
           <Button
             startIcon={<EastIcon />}
             variant="contained"
             sx={{
               color: '#FFFFFF',
               backgroundColor: '#1B4B66',
-              marginTop: '120px',
+              marginBottom: '30px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              width: '180px',
+              height: '44px',
+              maxHeight: '44px',
+              borderRadius: '8px',
+              textTransform: 'inherit',
             }}
           >
             See more
@@ -66,4 +82,4 @@ function HeroSection() {
   );
 }
 
-export default HeroSection
+export default HeroSection;
