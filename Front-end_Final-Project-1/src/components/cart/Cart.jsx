@@ -279,7 +279,10 @@ import { NavLink } from "react-router-dom";
                       bgcolor: "#1B4B66",
                     }}
                   >
-                    <NavLink to={"/CheckOut"}>Place Order</NavLink>
+                    <NavLink to={"/CheckOut"} style={{
+                      textDecoration:"none",
+                      color:"white"
+                    }}>Place Order</NavLink>
                   </Button>
                   <Button
                     variant="outlined"

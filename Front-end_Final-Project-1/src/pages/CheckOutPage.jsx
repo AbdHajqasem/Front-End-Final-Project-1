@@ -5,6 +5,7 @@ import CheckoutHeader from "../components/checkoutheader/CheckOutHeader";
 import AddressForm from "../components/adressform/AdressForm";
 import OrderSummary from "../components/ordersummary/OrderSummary";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const fetchCartItems = async ({ queryKey }) => {
   const [, userId, token] = queryKey;
@@ -17,12 +18,11 @@ const fetchCartItems = async ({ queryKey }) => {
       },
     }
   );
-  console.log(response.data);
-
   return response.data;
 };
 
 const CheckoutPage = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
 
@@ -65,7 +65,7 @@ const CheckoutPage = () => {
         }
       );
       alert("Order placed successfully!");
-      console.log(response.data);
+      navigate('/');
     } catch (error) {
       alert("Failed to update information or place the order.");
       console.error(error);

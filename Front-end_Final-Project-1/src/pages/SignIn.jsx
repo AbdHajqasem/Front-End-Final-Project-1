@@ -10,7 +10,8 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
 
 const LinkBox = styled(Box)({
@@ -20,6 +21,7 @@ const LinkBox = styled(Box)({
 });
 export default function SignIn() {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
   const [userData, setUserData] = useState({
     email: '',
@@ -34,12 +36,11 @@ export default function SignIn() {
         userData
       );
 
-      console.log(user);
       localStorage.setItem('token', JSON.stringify(user.data.token));
-      localStorage.setItem('user', JSON.stringify(user.data));
+      localStorage.setItem('user', JSON.stringify(user.data.firstName));
+      setUser(user.data.firstName);
       navigate('/');
     } catch (error) {
-      console.log(error);
       setError(error.response.data.message);
     }
   };

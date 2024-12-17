@@ -1,7 +1,7 @@
 import React from 'react';
 import { Paper, Typography, Box, Divider } from '@mui/material';
 
-const OrderSummary = () => (
+const OrderSummary = (prop) => (
   <Box
     sx={{
       width: { xs: '100%', sm: '412px' },
@@ -16,7 +16,7 @@ const OrderSummary = () => (
     <Divider sx={{ mb: 7 }} />
     <Box sx={{ mb: 2 }}>
       {/* First Item */}
-      <Box
+      {prop.cartItems.map((cartItem,index)=>( <Box key={index}
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -26,7 +26,7 @@ const OrderSummary = () => (
       >
         <Box
           component="img"
-          src="https://via.placeholder.com/70"
+          src={cartItem.product.imageUrl}
           alt="Product"
           sx={{
             width: 75,
@@ -36,48 +36,16 @@ const OrderSummary = () => (
             borderRadius: '8px',
           }}
         />
-        <Box textAlign={{ xs: 'center', sm: 'left' }}>
-          <Typography variant="body1">Coach</Typography>
+        <Box textAlign={{ xs: 'center', sm: 'left' }} key={index}>
+          <Typography variant="body1">{cartItem.product.name}</Typography>
           <Typography variant="body2" color="text.secondary">
-            Leather Coach Bag
+          {cartItem.product.categoryName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Qty - 1
-          </Typography>
-        </Box>
-      </Box>
-
-      {/* Second Item */}
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          mb: 8,
-          flexDirection: { xs: 'column', sm: 'row' },
-        }}
-      >
-        <Box
-          component="img"
-          src="https://via.placeholder.com/70"
-          alt="Product"
-          sx={{
-            width: 75,
-            height: 80,
-            mr: { sm: 2 },
-            mb: { xs: 2, sm: 0 },
-            borderRadius: '8px',
-          }}
-        />
-        <Box textAlign={{ xs: 'center', sm: 'left' }}>
-          <Typography variant="body1">Coach</Typography>
-          <Typography variant="body2" color="text.secondary">
-            Leather Coach Bag
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Qty - 1
+            {cartItem.quantity}
           </Typography>
         </Box>
-      </Box>
+      </Box>))}
     </Box>
 
     <Typography fontSize="20px" fontWeight="600" gutterBottom>
@@ -97,7 +65,7 @@ const OrderSummary = () => (
       }}
     >
       <Typography>Sub Total:</Typography>
-      <Typography sx={{ color: '#171520' }}>$119.69</Typography>
+      <Typography sx={{ color: '#171520' }}>${prop.summary.subtotal}</Typography>
     </Box>
 
     <Box
@@ -112,7 +80,7 @@ const OrderSummary = () => (
       }}
     >
       <Typography>Discount:</Typography>
-      <Typography sx={{ color: '#171520' }}>-$13.40</Typography>
+      <Typography sx={{ color: '#171520' }}>${prop.summary.discount}</Typography>
     </Box>
 
     <Box
@@ -127,7 +95,7 @@ const OrderSummary = () => (
       }}
     >
       <Typography>Delivery Fee:</Typography>
-      <Typography sx={{ color: '#171520' }}>$0.00</Typography>
+      <Typography sx={{ color: '#171520' }}>$12</Typography>
     </Box>
 
     <Box
@@ -142,7 +110,7 @@ const OrderSummary = () => (
       }}
     >
       <Typography>Grand Total:</Typography>
-      <Typography sx={{ color: '#171520' }}>$106.29</Typography>
+      <Typography sx={{ color: '#171520' }}>${prop.summary.grandTotal+12}</Typography>
     </Box>
   </Box>
 );
