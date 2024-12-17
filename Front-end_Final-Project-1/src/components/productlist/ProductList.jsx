@@ -1,125 +1,100 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Stack, Pagination } from "@mui/material";
-import { useParams } from "react-router-dom";
-import black from "/029ef5971eaa1f9cc5c527e9d758efcb.png";
+import { Box, Typography, CircularProgress, Pagination } from "@mui/material";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import ProductsCard from "../prodcutscard/ProductsCard";
 import AnnouncmentsHero from "../announcmentshero/AnnouncmentsHero";
-import axios from "axios";
-const data = {
-  items: [
-    {
-      id: "product-1",
-      name: "Product 1",
-      description:
-        "This is the description for Product 1. It has amazing features.",
-      price: 99.99,
-      discount: { discountRate: 20 },
-      ratingsNum: 120,
-      images: [{ publicURL: black }],
-    },
-    {
-      id: "product-2",
-      name: "Product 2",
-      description: "Product 2 is even better. This one is top-rated.",
-      price: 149.99,
-      discount: { discountRate: 15 },
-      ratingsNum: 85,
-      images: [{ publicURL: black }],
-    },
-    {
-      id: "product-1",
-      name: "Product 1",
-      description:
-        "This is the description for Product 1. It has amazing features.",
-      price: 99.99,
-      discount: { discountRate: 20 },
-      ratingsNum: 120,
-      images: [{ publicURL: black }],
-    },
-    {
-      id: "product-2",
-      name: "Product 2",
-      description: "Product 2 is even better. This one is top-rated.",
-      price: 149.99,
-      discount: { discountRate: 15 },
-      ratingsNum: 85,
-      images: [{ publicURL: black }],
-    },
 
-    {
-      id: "product-1",
-      name: "Product 1",
-      description:
-        "This is the description for Product 1. It has amazing features.",
-      price: 99.99,
-      discount: { discountRate: 20 },
-      ratingsNum: 120,
-      images: [{ publicURL: black }],
-    },
-    {
-      id: "product-2",
-      name: "Product 2",
-      description: "Product 2 is even better. This one is top-rated.",
-      price: 149.99,
-      discount: { discountRate: 15 },
-      ratingsNum: 85,
-      images: [{ publicURL: black }],
-    },
+const fetchProducts = async ({ queryKey }) => {
+  const [, { category, query, page, token }] = queryKey;
 
-  ],
-  itemsPerPage: 9,
+  const params = category === "search" ? { productName: query, page, limit: 9 } : { categoryName: category, page, limit: 9 };
+
+  const response = await axios.get(
+    `https://backend-final-1-1-bkpd.onrender.com/api/products`,
+    {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data;
 };
 
 const ProductList = () => {
-  // State to track current page and the items per page
+  const { category } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get("query") || ""; 
+
   const [page, setPage] = useState(1);
 
-  // Extract the items and items per page from the data
-  const { items, itemsPerPage } = data;
+  const token = localStorage.getItem("token")?.replace(/^"|"$/g, "");
 
-  // Calculate start and end index for current page items
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["products", { category, query: searchQuery, page, token }],
+    queryFn: fetchProducts,
+    keepPreviousData: true,
+  });
 
-  // Get the current page items
-  const currentItems = items.slice(startIndex, endIndex);
-
-  // Handle page change
   const handleChange = (event, value) => {
     setPage(value);
+    navigate(`/${category}?query=${searchQuery}&page=${value}`);
   };
-  const { category } = useParams();
-  const [products,setProducts]=useState([])
-  const token = localStorage.getItem('token')?.replace(/^"|"$/g, '');
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(
-          `https://backend-final-1-1-bkpd.onrender.com/api/products`,
-          {
-            params: {
-              categoryName: category, 
-            },
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-console.log(response.data);
 
-        setProducts(response.data.data);
-      } 
-      catch (error) {
-        console.log(error);
-      }
-    }
-    fetchProducts()
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexGrow: 1,
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   }
-    , [])
+
+  if (isError) {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Typography variant="h6" color="error">
+          Error: {error.message}
+        </Typography>
+      </Box>
+    );
+  }
+
+  const { data: products, pagination } = data;
+  const { totalPages } = pagination;
 
   return (
-    <Box sx={{ width: "100%", display: "flex", justifyContent: "center", flexGrow: 1 }}>
+    <Box
+      sx={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        flexGrow: 1,
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -132,28 +107,36 @@ console.log(response.data);
           boxSizing: "border-box",
         }}
       >
-        <AnnouncmentsHero></AnnouncmentsHero>
+        <AnnouncmentsHero />
         <Box
-        sx={{
-          width: "100%",
-          display: "grid",
-          gap: "40px",
-          gridTemplateColumns: "repeat(auto-fill, minmax(286px, 1fr))",
-        }}
-      >
-        {products.map((product)=>(<ProductsCard name={product.dataValues.name}img={product.dataValues.imageUrl} price={product.dataValues.price}/>))}
+          sx={{
+            width: "100%",
+            display: "grid",
+            gap: "40px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(286px, 1fr))",
+          }}
+        >
+          {products.map((product) => (
+            <ProductsCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              img={product.imageUrl}
+              price={product.price}
+              description={product.description}
+              category={product.categoryName}
+            />
+          ))}
         </Box>
-        <Stack spacing={2} sx={{ mt: 4, alignSelf: "center" }}>
-          <Pagination
-            count={Math.ceil(items.length / itemsPerPage)}
-            page={page}
-            onChange={handleChange}
-            color="primary"
-            shape="rounded"
-            variant="outlined"
-            sx={{ mx: "auto" }}
-          />
-        </Stack>
+        <Pagination
+          count={totalPages}
+          page={page}
+          onChange={handleChange}
+          color="primary"
+          shape="rounded"
+          variant="outlined"
+          sx={{ mx: "auto", mt: 4 }}
+        />
       </Box>
     </Box>
   );

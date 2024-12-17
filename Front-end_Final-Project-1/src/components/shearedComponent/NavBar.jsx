@@ -1,22 +1,36 @@
+import React, { useState } from 'react';
 import { AppBar, Toolbar, styled, Typography, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+
 const StyledToolBar = styled(Toolbar)({
   display: 'flex',
   justifyContent: 'space-between',
 });
+
 const StyledTypography = styled(Typography)({
   color: '#17494D',
 });
+
 const linkStyle = {
   textDecoration: 'none',
   color: 'black',
   marginRight: '10px',
 };
+
 export default function NavBar() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      navigate(`/search?query=${searchQuery}`);
+    }
+  };
+
   return (
     <AppBar position="sticky" sx={{ backgroundColor: 'white' }} elevation={0}>
       <StyledToolBar>
@@ -24,17 +38,14 @@ export default function NavBar() {
           sx={{
             display: 'flex',
             alignItems: 'center',
-
             textAlign: 'center',
           }}
         >
           <StyledTypography variant="h5" sx={{ marginRight: '20px' }}>
             CORA'L
           </StyledTypography>
-          {/* left side */}
           <Box
             sx={{
-              // width: '100%',
               display: {
                 xs: 'none',
                 md: 'flex',
@@ -44,27 +55,10 @@ export default function NavBar() {
               color: '#171520',
             }}
           >
-            {' '}
-            <Link to={'/'} style={linkStyle}>
-              Handbags
-            </Link>
-            <Link to={'/'} style={linkStyle}>
-              Watches
-            </Link>
-            <Link to={'/'} style={linkStyle}>
-              Skincare
-            </Link>
-            <Link to={'/'} style={linkStyle}>
-              Jewellery
-            </Link>
-            <Link to={'/'} style={linkStyle}>
-              Apparels
-            </Link>
+            {/* Add your categories links here */}
           </Box>
         </Box>
-        {/* right side */}
         <Box display={'flex'} alignItems={'center'}>
-          {/* search box */}
           <Box
             sx={{
               background: '#F1F1F1',
@@ -80,6 +74,9 @@ export default function NavBar() {
             <input
               type="text"
               placeholder="Search for products or brands....."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchKeyPress}
               style={{
                 outline: 'none',
                 border: 'none',
@@ -88,7 +85,7 @@ export default function NavBar() {
               }}
             />
           </Box>
-          {/* icons box */}
+          {/* Icons box */}
           <Box marginLeft={2} flexWrap={'nowrap'}>
             <Link to={'/'} style={{ marginRight: '5px' }}>
               <FavoriteBorderIcon sx={{ color: '#1B4B66' }} />

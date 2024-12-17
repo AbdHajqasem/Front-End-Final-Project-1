@@ -2,7 +2,7 @@ import { Box, Container, IconButton, Typography } from '@mui/material';
 
  const BottomCards = () => {
     return (
-        <Container>
+        <Container sx={{maxWidth:"1360px !important", width:"100%", margin:"0px !important"}}>
             <Box
                 sx={{
                     display: 'flex',
@@ -23,7 +23,7 @@ import { Box, Container, IconButton, Typography } from '@mui/material';
                 >
                     <Box
                         component="img"
-                        src="/images/bigcard.jpg"
+                        src="/f773c7f03ea20627fb888ab56d2cdf88.jpg"
                         sx={{
                             height: '100%',
                             minWidth: '100%',
@@ -84,7 +84,7 @@ import { Box, Container, IconButton, Typography } from '@mui/material';
                     >
                         <Box
                             component="img"
-                            src="/images/smallcard1edit.jpg"
+                            src="/3455fcac641b37093a699f9f558198a1.jpg"
                             sx={{
                                 width: '100%',
                                 height: '228px',
@@ -150,7 +150,7 @@ import { Box, Container, IconButton, Typography } from '@mui/material';
                     >
                         <Box
                             component="img"
-                            src="/images/smallcard2.jpg"
+                            src="/97c00f0d0944ecf2bf0c55baa33378bc.png"
                             sx={{
                                 width: '100%',
                                 height: '228px',

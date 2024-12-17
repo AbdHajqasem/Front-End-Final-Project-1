@@ -5,32 +5,8 @@ import BrandsCard from '../barndscard/BrandsCard';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Brands = () => {
-  const [brands, setBrands] = useState([]);
-  const [error, setError] = useState(null);
-  const token = localStorage.getItem('token')?.replace(/^"|"$/g, '');
+const Brands = (prop) => {
 
-  useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const response = await axios.get('https://backend-final-1-1-bkpd.onrender.com/api/brands', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        });
-        setBrands(response.data.brands);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-
-    fetchBrands();
-  }, []);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
     <div className="brands-container">
@@ -60,7 +36,7 @@ const Brands = () => {
           },
         }}
       >
-        {brands.map((brand) => (
+        {prop.brands.map((brand) => (
           <SwiperSlide key={brand.id}>
             <BrandsCard barndname={brand.name} brandLogo={brand.logo} />
           </SwiperSlide>

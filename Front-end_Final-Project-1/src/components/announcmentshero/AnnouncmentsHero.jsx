@@ -7,7 +7,7 @@ const AnnouncmentsHero = () => {
             <Box sx={{ position: "relative" }}>
                 <Box
                     component={"img"}
-                    src="/images/blackfridayedited.png"
+                    src="/BlackFriday.jpg"
                     sx={{
                         width: "100%",
                         height: { xs: "250px", sm: "300px", md: "400px" },

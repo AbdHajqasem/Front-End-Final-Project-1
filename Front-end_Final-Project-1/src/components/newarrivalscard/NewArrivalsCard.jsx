@@ -1,10 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
+import { NavLink } from "react-router-dom";
 const NewArrivalsCard = (prop) => {
   return (
     <>
-        <Box
+        <NavLink
+         to={`/${prop.category}/${prop.name}/${prop.id}`}
+        style={{
+          textDecoration: "none",
+          color:"#171520",
+        }}
           sx={{
             backgroundColor: "var(--button-bg-color)",
             display: "flex",
@@ -76,7 +81,7 @@ const NewArrivalsCard = (prop) => {
               </Typography>
             </Box>
           </Box>
-        </Box>
+        </NavLink>
     </>
   );
 };
